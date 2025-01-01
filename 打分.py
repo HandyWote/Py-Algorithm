@@ -1,0 +1,5 @@
+n = int(input())
+a = list(map(int,input().split()))
+m = max(a) + min(a)
+ans = (sum(a) - m)/(len(a)-2)
+print("%.2f" % ans)

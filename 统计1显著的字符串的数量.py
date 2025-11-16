@@ -1,52 +1,52 @@
-class Solution:
-    def numberOfSubstrings(self, s: str) -> int:
-        ans = 0
-        n = len(s)
-        total_ones = s.count('1')
-        M = int(total_ones + (total_ones ** 0.5)) + 1
-        for l in range(1, n+1):
-            if l > M: break
-            cnt1 = s[:l].count('1')
-            cnt0 = l - cnt1
-            if cnt1 >= cnt0 ** 2:
-                ans += 1
-            for i in range(l, n):
-                left_char = s[i - l]
-                right_char = s[i]
-                if left_char == '1':
-                    cnt1 -= 1
-                else:
-                    cnt0 -= 1
-                if right_char == '1':
-                    cnt1 += 1
-                else:
-                    cnt0 += 1
-                if cnt1 >= cnt0 ** 2:
-                    ans += 1
-        return ans
+# class Solution:
+#     def numberOfSubstrings(self, s: str) -> int:
+#         ans = 0
+#         n = len(s)
+#         total_ones = s.count('1')
+#         M = int(total_ones + (total_ones ** 0.5)) + 1
+#         for l in range(1, n+1):
+#             if l > M: break
+#             cnt1 = s[:l].count('1')
+#             cnt0 = l - cnt1
+#             if cnt1 >= cnt0 ** 2:
+#                 ans += 1
+#             for i in range(l, n):
+#                 left_char = s[i - l]
+#                 right_char = s[i]
+#                 if left_char == '1':
+#                     cnt1 -= 1
+#                 else:
+#                     cnt0 -= 1
+#                 if right_char == '1':
+#                     cnt1 += 1
+#                 else:
+#                     cnt0 += 1
+#                 if cnt1 >= cnt0 ** 2:
+#                     ans += 1
+#         return ans
     
-    def numberOfSubstrings(self, s: str) -> int:
-        n = len(s)
-        ans = 0
-        prefix0 = [0] * (n + 1)
-        prefix1 = [0] * (n + 1)
-        for i in range(1, n + 1):
-            prefix0[i] = prefix0[i-1] + (1 if s[i-1] == '0' else 0)
-            prefix1[i] = prefix1[i-1] + (1 if s[i-1] == '1' else 0)
-        total_ones = prefix1[n]
-        max_search_length = int(total_ones + (total_ones ** 0.5)) + 1
-        for i in range(n):
-            for j in range(i, min(n, i + max_search_length)):
-                cnt0 = prefix0[j+1] - prefix0[i]
-                cnt1 = prefix1[j+1] - prefix1[i]
+#     def numberOfSubstrings(self, s: str) -> int:
+#         n = len(s)
+#         ans = 0
+#         prefix0 = [0] * (n + 1)
+#         prefix1 = [0] * (n + 1)
+#         for i in range(1, n + 1):
+#             prefix0[i] = prefix0[i-1] + (1 if s[i-1] == '0' else 0)
+#             prefix1[i] = prefix1[i-1] + (1 if s[i-1] == '1' else 0)
+#         total_ones = prefix1[n]
+#         max_search_length = int(total_ones + (total_ones ** 0.5)) + 1
+#         for i in range(n):
+#             for j in range(i, min(n, i + max_search_length)):
+#                 cnt0 = prefix0[j+1] - prefix0[i]
+#                 cnt1 = prefix1[j+1] - prefix1[i]
                 
-                if cnt1 >= cnt0 ** 2:
-                    ans += 1
-                elif cnt0 > 0 and cnt1 < cnt0 ** 2 and (j+1 < n and s[j+1] != '1'):
-                    remaining_ones = prefix1[n] - prefix1[j+1]
-                    if cnt1 + remaining_ones < cnt0 ** 2:
-                        break
-        return ans
+#                 if cnt1 >= cnt0 ** 2:
+#                     ans += 1
+#                 elif cnt0 > 0 and cnt1 < cnt0 ** 2 and (j+1 < n and s[j+1] != '1'):
+#                     remaining_ones = prefix1[n] - prefix1[j+1]
+#                     if cnt1 + remaining_ones < cnt0 ** 2:
+#                         break
+#         return ans
 
 
 max = lambda a, b: b if b > a else a

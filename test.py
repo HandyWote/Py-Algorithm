@@ -37,7 +37,7 @@ class test():
             print(f"\n=== Test {i+1}: {c} ===")
             
             # 处理参数解包
-            if isinstance(c, (tuple, list)):
+            if isinstance(c, tuple):
                 result = method(*c)
             else:
                 result = method(c)

@@ -9,7 +9,7 @@ class Solution:
         return True
 
 if __name__ == "__main__":
-    from test import test
+    from test import Test
     cases = {
             'input':[
                 ([1,0,0,0,1,0,0,1], 2),
@@ -21,5 +21,5 @@ if __name__ == "__main__":
             ]
         }
     s = Solution()
-    t = test(cases, s, 'kLengthApart')
+    t = Test(cases, s, 'kLengthApart')
     t.run()

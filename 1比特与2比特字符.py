@@ -16,6 +16,6 @@ if __name__ == "__main__":
         'input': [[1, 0, 0], [1, 1, 1, 0]],
         'output': [True, False]
     }
-    from test import test
-    t = test(cases, Solution(), 'isOneBitCharacter')
+    from test import Test
+    t = Test(cases, Solution(), 'isOneBitCharacter')
     t.run()

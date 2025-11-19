@@ -8,7 +8,7 @@ class Solution:
         return original
 
 if __name__ == "__main__":
-    from test import test
+    from test import Test
     cases = {
         "input": [
             ([5,3,6,1,12], 3),
@@ -16,4 +16,4 @@ if __name__ == "__main__":
         ],
         "output": [24, 4]
     }
-    test(cases, Solution(), "findFinalValue").run()
+    Test(cases, Solution(), "findFinalValue").run()

@@ -1,6 +1,6 @@
 import time
 
-class test():
+class Test():
     def __init__(self, cases: dict, solution: object = None, func: str = None) -> None:
         """
         初始化测试类

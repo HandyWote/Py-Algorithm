@@ -1,3 +1,6 @@
+from string import ascii_lowercase
+
+
 class Solution:
     def countPalindromicSubsequence(self, s: str) -> int:
         ans = 0

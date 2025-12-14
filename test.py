@@ -5,10 +5,11 @@ from typing import Any
 class Case:
     """测试用例类，用于存储和管理测试输入输出数据"""
     
-    def __init__(self):
+    def __init__(self, cases: list = None) -> None:
         """初始化测试用例对象"""
         self.input: list = []
         self.output: list = []
+        self.add_cases(cases)
     
     def add_case(self, input_data: Any, expected_output: Any) -> None:
         """

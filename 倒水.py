@@ -8,8 +8,8 @@ def func():
         for j in range(i, n, k):
             prefix_sum += w[j]
             cnt += 1
-            prefix_sum /= cnt
-            m = min(m, prefix_sum)
+            avg = prefix_sum // cnt
+            m = min(m, avg)
     print(int(m))
 
 if __name__ == "__main__":    func()

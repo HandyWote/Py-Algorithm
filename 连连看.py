@@ -9,7 +9,7 @@ def get_input():
         a.append(list(map(int, input().split())))
     return n, m, a
 
-def solve(n, m, a):
+def tally(n, m, a):
     # main_diag[i-j] = {值: 出现次数}
     main_diag = defaultdict(lambda: defaultdict(int))
     # anti_diag[i+j] = {值: 出现次数}
@@ -20,17 +20,17 @@ def solve(n, m, a):
             val = a[i][j]
             main_diag[i - j][val] += 1
             anti_diag[i + j][val] += 1
+            
+    return main_diag, anti_diag
+
+def solve(n, m, a):
+    main_diag, anti_diag = tally(n, m, a)
 
     ans = 0
-    # 主对角线配对
-    for diag in main_diag.values():
-        for cnt in diag.values():
-            ans += cnt * (cnt - 1) // 2
-
-    # 副对角线配对
-    for diag in anti_diag.values():
-        for cnt in diag.values():
-            ans += cnt * (cnt - 1) // 2
+    for diag_dict in (main_diag, anti_diag):
+        for cnt_dict in diag_dict.values():
+            for cnt in cnt_dict.values():
+                ans += cnt * (cnt - 1) // 2
 
     return ans * 2  # 顺序不同算不同对
 
